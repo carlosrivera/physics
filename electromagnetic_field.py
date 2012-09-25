@@ -27,6 +27,7 @@ def main():
 
     print particles
 
+    #sort particles by distance from origin
     particles.sort(key=lambda x: x[0])
 
     print particles[-1:][0][0]
@@ -70,13 +71,15 @@ def compute_field():
     for x, q in particles:
         vector1 = (pointx, pointy)
         vector2 = (x, 0)
+        #compute dot product
         a = sum(p*q for p, q in zip(vector1, vector2))
-        
+        #total field = sum (cos alpha)(y - yi)
         E = E + (a * pointy)
     return E
 
 def plot_charges():
     glColor4f(1, 1, 0, 1)
+    #get the farest particle to bound the system to the window
     boundingx = 600 / particles[-1:][0][0]
 
     print boundingx
@@ -91,11 +94,13 @@ def plot_charges():
         glEnd()
     return
 
+#Not finished
 def plot_field():
     glBegin(GL_LINES)
 
     glColor4f(.2, .2, .2, .51)
     
+    #Needs to implemet rotations on x
     for x in range(0, 850, 25):
         for y in range(0, 650, 25):
             glVertex2f(x+12, y+5)
@@ -114,6 +119,7 @@ def render_grid():
     glDisable(GL_LINE_SMOOTH)
     glBegin(GL_LINES)
 
+    #Draw axis
     glColor4f(1, 0, 0, 1)
     glVertex2f(100.0,100.0)
     glVertex2f(700.0,100.0)
@@ -121,8 +127,6 @@ def render_grid():
     glColor4f(0, 0, 1, 1)
     glVertex2f(100.0,100.0)
     glVertex2f(100.0,540.0)
-
-    
     
     glColor4f(0, .21, 0, 1)
     for i in range(25, 850, 25):
