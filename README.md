@@ -5,6 +5,6 @@ Python simulation for a electromagnetic field on a finite 1D bar.
 
 Requires **PyOpenGL**, you can install it using (and perhaps the GLUT binary file)
 
-´´´shell
+Â´Â´Â´shell
 python easy_install PyOpenGL
-´´´
+Â´Â´Â´
